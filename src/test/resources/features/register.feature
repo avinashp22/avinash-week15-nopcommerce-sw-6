@@ -21,12 +21,12 @@ Feature: Register Test
     Given I am on home page
     When I click on register link
     And I select gender "Male"
-    And I enter first name "Aviiinashhh"
-    And I enter last name "Pateeelll"
+    And I enter first name "Aviiinnsashhh"
+    And I enter last name "Ppaateeelll"
     And I select day "22"
     And I select month "December"
     And I select year "2000"
-    And I enter email in register page "avvviiiinashpp2221@gmail.com"
+    And I enter email in register page "avvviiiinnaashpp2221@gmail.com"
     And I enter password in register page "Prime12345"
     And I enter confirm password "Prime12345"
     And  I click on register button button
