@@ -1,32 +1,33 @@
-Feature: Register
+Feature: Register Test
 
-  Scenario: verifyUserShouldNavigateToRegisterPageSuccessfully
-  Given I am on homepage
-  When Click on Register Link
-  Then Verify "Register" text
+  Scenario: User should navigate to register page successfully
+    Given I am on home page
+    When I click on register link
+    Then Register text is displayed
 
 
-  Scenario:  verifyThatFirstNameLastNameEmailPasswordAndConfirmPasswordFieldsAreMandatory
-  Given I am on homepage
-    When  Click on Register Link
-  And Click on "REGISTER" button
-    Then  Verify the error message "First name is required."
-    Then Verify the error message "Last name is required."
-    Then Verify the error message "Email is required."
-    Then Verify the error message "Password is required."
-    Then Verify the error message "Password is required."
+  Scenario: Verify that first name, last name, email, password, and confirm password fields are mandatory
+    Given I am on home page
+    When I click on register link
+    And I click on register button
+    And I should see First name is required
+    And I should see Last name is required
+    And I should see Email is required
+    And I should see Password is required
+    Then I should see Confirm password is required
 
-  Scenario: verifyThatUserShouldCreateAccountSuccessfully
-  Given I am on homepage
-    When Click on Register Link
-    And Select gender "Female"
-    And Enter firstname
-    And  Enter lastname
-    And  Select day
-    And  Select month
-    And  Select year
-    And  Enter email
-    And  Enter password
-    And Enter Confirm Password
-    And  Click on "REGISTER" button
-    Then Verify message "Your registration completed"
+
+  Scenario: Verify user should create account successfully
+    Given I am on home page
+    When I click on register link
+    And I select gender "Male"
+    And I enter first name "Aviiinashhh"
+    And I enter last name "Pateeelll"
+    And I select day "22"
+    And I select month "December"
+    And I select year "2000"
+    And I enter email in register page "aviiinashpp2221@gmail.com"
+    And I enter password in register page "Prime12345"
+    And I enter confirm password "Prime12345"
+    And  I click on register button button
+    Then I should see registration message completed message

@@ -1,28 +1,29 @@
-Feature: Computer
+Feature: Computer Page Test
 
-  Scenario: verifyUserShouldNavigateToComputerPageSuccessfully
-    Given I am on homepage
-    When Click on Computer tab
- Then Verify "Computer" text
+  Scenario: Verify user should navigate to computer page successfully
+    Given I am on home page
+    When I click on menu tab "Computers"
+    Then I should navigate to computers page successfully
 
-  Scenario:  verifyUserShouldNavigateToDesktopsPageSuccessfully
-    Given I am on homepage
-    When  Click on Computer tab
-  And Click on Desktops link
-    Then Verify "Desktops" text
+  Scenario: Verify user should navigate to desktops page successfully
+    Given I am on home page
+    When I click on menu tab "Computers"
+    And I click on desktops link "Desktops"
+    Then Verify desktops page is displayed
 
-  Scenario Outline: verifyThatUserShouldBuildYouOwnComputerAndAddThemToCartSuccessfully
-    Given I am on homepage
-    When Click on Computer tab
-  And Click on Desktops link
-    And Click on product name "Build your own computer"
-    And Select processor "<processor>"
-    And  Select RAM "<ram>"
-    And  Select HDD "<hdd>"
-    And  Select OS "<os>"
-    And  Select Software "<software>"
-    And Click on "ADD TO CART" Button
-    Then Verify message "The product has been added to your shopping cart"
+
+  Scenario Outline: Verify user should build own computer and add to cart successfully
+    Given I am on home page
+    When I click on menu tab "Computers"
+    And I click on desktops link "Desktops"
+    And  I click on build your own computer
+    And I select processor "<processor>"
+    And I select ram "<ram>"
+    And I select HDD "<hdd>"
+    And I select OS "<os>"
+    And I select software "<software>"
+    And  I click on add to cart button
+    Then Verify product has been added to your shopping cart text
 
     Examples:
   | processor | ram | hdd | os | software |

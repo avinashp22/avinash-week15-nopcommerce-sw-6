@@ -2,124 +2,77 @@ package com.nopcommerce.demo.pages;
 
 
 import com.nopcommerce.demo.utility.Utility;
-import org.openqa.selenium.By;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 
 public class HomePage extends Utility {
+    private static final Logger log = LogManager.getLogger(HomePage.class.getName());
+
+    public HomePage() {
+        PageFactory.initElements(driver, this);
+    }
+
     @CacheLookup
-    @FindBy(linkText = "Log in")
+    @FindBy(xpath = "//ul[@class = 'top-menu notmobile']/li")
+    List<WebElement> menuTop;
+    @CacheLookup
+    @FindBy(xpath = "//a[contains(text(),'Log in')]")
     WebElement loginLink;
-
     @CacheLookup
-    @FindBy(linkText = "Register")
+    @FindBy(xpath = "//a[contains(text(),'Register')]")
     WebElement registerLink;
-
     @CacheLookup
-    @FindBy(xpath = "//img[@alt='nopCommerce demo store']")
-    WebElement nopCommerceLogo;
-
+    @FindBy(xpath = "//body/div[6]/div[1]/div[2]/div[1]/a[1]/img[1]")
+    WebElement nopcommerceLogo;
     @CacheLookup
-    @FindBy(xpath = "//a[normalize-space()='Log out']")
-    WebElement logOut;
-
+    @FindBy(xpath = "//a[contains(text(),'My account')]")
+    WebElement myAccountLink;
     @CacheLookup
-    @FindBy(linkText = "//ul[@class = 'top-menu notmobile']")
-    WebElement topMenu;
+    @FindBy(xpath = "//a[contains(text(),'Log out')]")
+    WebElement logout;
 
-    @CacheLookup
-    @FindBy(xpath = "//ul[@class='top-menu notmobile']//a[normalize-space()='Computers']")
-    WebElement computers;
+    public void selectTopMenu(String topMenu) {
 
-    @CacheLookup
-    @FindBy(xpath = "//ul[@class='top-menu notmobile']//a[normalize-space()='Electronics']")
-    WebElement electronics;
-
-    @CacheLookup
-    @FindBy(xpath = "//ul[@class='top-menu mobile']//a[normalize-space()='Apparel']")
-    WebElement apparel;
-
-    @CacheLookup
-    @FindBy(xpath = "//ul[@class='top-menu mobile']//a[normalize-space()='Digital downloads']")
-    WebElement digitalDownloads;
-
-    @CacheLookup
-    @FindBy(xpath = "//ul[@class='top-menu mobile']//a[normalize-space()='Books']")
-    WebElement books;
-
-    @CacheLookup
-    @FindBy(xpath = "//ul[@class='top-menu mobile']//a[normalize-space()='Jewelry']")
-    WebElement jewelry;
-
-    @CacheLookup
-    @FindBy(xpath = "//ul[@class='top-menu mobile']//a[normalize-space()='Gift Cards']")
-    WebElement giftCards;
-
-
-    public void clickOnLoginLink() {
-        clickOnElement(loginLink);
-    }
-
-    public String getTextLogIn() {
-        return getTextFromElement(loginLink);
-    }
-
-    public void clickOnLogOutLink() {
-        clickOnElement(logOut);
-    }
-
-    public String getTextLogOut() {
-        return getTextFromElement(logOut);
-    }
-
-    public void clickOnComputers() {
-        clickOnElement(computers);
-    }
-
-    public void clickOnElectronics() {
-        clickOnElement(electronics);
-    }
-
-    public void clickOnApparel() {
-        clickOnElement(apparel);
-    }
-
-    public void clickOnDigitalDownloads() {
-        clickOnElement(digitalDownloads);
-
-    }
-
-    public void clickOnBooks() {
-        clickOnElement(books);
-    }
-
-    public void clickOnJewelry() {
-        clickOnElement(jewelry);
-
-    }
-
-    public void clickOnGiftCards() {
-        clickOnElement(giftCards);
-    }
-
-    public void clickOnRegisterLink() {
-        clickOnElement(registerLink);
-    }
-
-
-    public void selectMenu(String menu) {
-        List<WebElement> topMenu = driver.findElements(By.xpath("//ul[@class='top-menu notmobile']//li//a"));
-        for (WebElement tabs : topMenu) {
-            if (menu.equalsIgnoreCase(tabs.getText())) {
-                tabs.click();
+        log.info("Select top menu." + topMenu + "from options" + topMenu.toString());
+        for (WebElement allMenu : menuTop) {
+            if (allMenu.getText().equalsIgnoreCase(topMenu)) {
+                clickOnElement(allMenu);
                 break;
             }
         }
     }
 
+    public void clickOnLoginLink() {
+        log.info("Click on login link." + loginLink.toString());
+        clickOnElement(loginLink);
+    }
+
+    public void clickOnRegisterLink() {
+        log.info("Click on register link." + registerLink.toString());
+        clickOnElement(registerLink);
+    }
+
+    public boolean nopCommerceLogoIsDisplayed() {
+        log.info("Verify nopcommerce logo is displayed." + nopcommerceLogo.toString());
+        return nopcommerceLogo.isDisplayed();
+    }
+
+    public void clickOnMyAccountLink() {
+        log.info("Click on my account link." + myAccountLink.toString());
+        clickOnElement(myAccountLink);
+    }
+
+
+    public String verifyLoginLinkIsDisplayed() {
+        log.info("Verify login link." + logout.toString());
+        return getTextFromElement(loginLink);
+    }
 }
 
