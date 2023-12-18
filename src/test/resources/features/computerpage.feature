@@ -1,17 +1,19 @@
 Feature: Computer Page Test
 
+  @smoke @sanity @regression
   Scenario: Verify user should navigate to computer page successfully
     Given I am on home page
     When I click on menu tab "Computers"
     Then I should navigate to computers page successfully
 
+  @regression
   Scenario: Verify user should navigate to desktops page successfully
     Given I am on home page
     When I click on menu tab "Computers"
     And I click on desktops link "Desktops"
     Then Verify desktops page is displayed
 
-
+  @sanity @regression
   Scenario Outline: Verify user should build own computer and add to cart successfully
     Given I am on home page
     When I click on menu tab "Computers"

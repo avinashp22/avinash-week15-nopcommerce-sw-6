@@ -7,11 +7,11 @@ import io.cucumber.testng.CucumberOptions;
         features = "src/test/resources/features",
         glue = "com/nopcommerce/demo/steps",
         plugin = {"html:target/cucumber-reports/cucumber.html",
-        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
-
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+        tags = "@sanity"
 )
 
-public class RunChukeTest extends AbstractTestNGCucumberTests {
+public class Runsanity extends AbstractTestNGCucumberTests {
 
 
 }

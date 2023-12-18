@@ -1,11 +1,12 @@
 Feature: Register Test
 
+  @smoke @sanity @regression
   Scenario: User should navigate to register page successfully
     Given I am on home page
     When I click on register link
     Then Register text is displayed
 
-
+  @regression
   Scenario: Verify that first name, last name, email, password, and confirm password fields are mandatory
     Given I am on home page
     When I click on register link
@@ -16,7 +17,7 @@ Feature: Register Test
     And I should see Password is required
     Then I should see Confirm password is required
 
-
+  @sanity @regression
   Scenario: Verify user should create account successfully
     Given I am on home page
     When I click on register link
